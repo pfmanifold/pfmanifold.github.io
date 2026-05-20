@@ -1,89 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Responsive Two Columns</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-    }
-
-    .container {
-      display: flex;
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-      <!-- gap: 20px; -->
-      padding: 20px;
-    }
-
-    .column {
-      flex: 1;
-      padding: 20px;
-      background-color: #f2f2f2;
-      border-radius: 8px;
-    }
-
-    /* Mobile: stack columns */
-    @media (max-width: 600px) {
-      .container {
-        flex-direction: column;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pfmanifold.com/title>
 </head>
 <body>
 
-  <div class="container">
-    
-    <div class="column">
-      <h2>Column 1</h2>
-      <p>This is the first column.</p>
-    </div>
+    <header>
+        <h1>pfmanifold.com</h1>
+    </header>
 
-    <div class="column">
-      <h2>Column 2</h2>
-      <p>This is the second column.</p>
-    </div>
-      
-    </div>
-    
-    <div class="container">
-    
-     <div class="column">
-      <h2>A</h2>
-      <p>...D.</p>
-    </div>
+    <main>
+        <p></p>
+    </main>
 
-    <div class="column">
-      <h2>B</h2>
-      <p>...</p>
-</div>
-      </div>
-   
-
-<script type="module">
-import WaveSurfer from 'https://cdn.jsdelivr.net/npm/wavesurfer.js@7/dist/wavesurfer.esm.js'
-
-const wavesurfer = WaveSurfer.create({
-  container: '#waveform',
-  waveColor: '#4F4A85',
-  progressColor: '#383351',
-  mediaControls: true,
-  url: 'BeforeAfter-1.mp3',
-})
-
-wavesurfer.on('interaction', () => {
-  wavesurfer.play()
-})
-
-// Play/pause
-document.querySelector('button').addEventListener('click', () => {
-  wavesurfer.playPause()
-})
-</script>
+    <footer>
+        <p></p>
+    </footer>
 
 </body>
 </html>
