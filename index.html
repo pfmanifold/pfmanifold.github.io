@@ -1,4 +1,165 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>pfmanifold | audio cleanup and structured transcription</title><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"><script src="https://cdn.jsdelivr.net/npm/bootstrap@a4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script><style>body{background-color:#6c757d;min-height:100vh}.custom-container{max-width:800px;width:100%}@media (min-width:768px){.flush-left{padding-left:0!important;padding-right:0!important}}.header-photo{width:80px;height:80px;object-fit:cover}.text-padding-left{margin-left:20px;min-width:0}.footer-link{color:rgba(255,255,255,.5);text-decoration:underline;transition:color .2s ease-in-out}.footer-link:hover{color:#fff}</style></head><body class="py-4 d-flex flex-column justify-content-between min-vh-100"><div class="container custom-container flush-left mb-auto"><header class="d-flex align-items-center mb-4 text-white"><div class="me-5"><img src="one.png" alt="Profile Photo" class="header-photo rounded flex-shrink-0 object-fit-cover img-fluid shadow-sm"></div><div class="text-padding-left"><h2 class="display-7 fw-bold mb-1 line-height-1">patrick manifold</h2><p class="lead text-white-50 m-0">audio cleanup and repair | verified transcripts | dataset preparation</p></div></header><div class="row bg-white rounded overflow-hidden shadow-sm g-0 mb-4"><div class="col-md-6 p-4 border-end"><h2 class="h4 text-dark mb-3">Restoration</h2><p class="text-muted"><ul><li>difficult audio cleanup</li><li>noise reduction</li><li>speech enhancement</li><li>speaker separation/preparation</li><li>intelligibility improvement</li></ul></p></div><div class="col-md-6 p-4"><div id="waveform1"></div></div></div><div class="row bg-white rounded overflow-hidden shadow-sm g-0 mb-4"><div class="col-md-6 p-4 border-end"><h2 class="h4 text-dark mb-3">Transcription and QA</h2><p class="text-muted"><ul><li>AI-assisted transcription</li><li>manual verification</li><li>accuracy correction</li><li>speaker labeling</li><li>timestamps</li></ul></p></div><div class="col-md-6 p-4"><img src="srt3.jpg" width="350" alt="image of formatted srt text"></div></div><div class="row bg-white rounded overflow-hidden shadow-sm g-0 mb-5"><div class="col-md-6 p-4 border-end"><h2 class="h4 text-dark mb-3">Structuring and annotation</h2><p class="text-muted"><ul><li>formatted transcripts</li><li>subtitle files</li><li>structured datasets</li><li>tagging/annotation</li><li>JSON/CSV/SQL exports</li></ul></p></div><div class="col-md-6 p-4"><p class="text-muted"><img src="json.jpg" width="350" alt="image of JSON text"></p></div></div></div><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/dist/js/bootstrap.bundle.min.js"></script><script type="module">import WaveSurfer from 'https://cdn.jsdelivr.net/npm/wavesurfer.js@7/dist/wavesurfer.esm.js'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pf manifold | audio cleanup and structured transcriptions</title>
+    <!-- Bootstrap 5 CSS via CDN -->
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+    <style>
+        /* Mid-grey base page background */
+        body {
+            background-color: #6c757d; /* Standard Bootstrap mid-grey */
+            min-height: 100vh;
+        }
+
+        /* Enforce a strict maximum width of 800px for the content area */
+        .custom-container {
+            max-width: 800px;
+            width: 100%;
+        }
+
+        /* Forces the header components to perfectly line up with the left edge of the content cards */
+        @media (min-width: 768px) {
+            .flush-left {
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+            }
+        }
+
+        /* Fixed dimensions for the square photo frame */
+        .header-photo {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+        }
+
+        /* Custom gap control: Increase this pixel value if you want the text pushed further right */
+        .text-padding-left {
+            margin-left: 20px;
+			min-width: 0;
+        }
+
+        /* Custom link hover color for the footer */
+        .footer-link {
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: underline;
+            transition: color 0.2s ease-in-out;
+        }
+        .footer-link:hover {
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body class="py-4 d-flex flex-column justify-content-between min-vh-100">
+
+    <!-- Main 1000px Wrapper -->
+    <div class="container custom-container flush-left mb-auto">
+	
+<header class="d-flex align-items-center mb-4 text-white">
+    <!-- Keep this wrapper exactly as is -->
+    <div class="me-4 flex-shrink-0"> 
+        <!-- Removed img-fluid, added explicit responsive inline sizing -->
+        <img src="one.png" 
+             alt="Profile Photo" 
+             class="header-photo rounded shadow-sm object-fit-cover"
+             style="width: 80px; height: 80px;" />
+    </div>
+    
+    <!-- This container holds your text and scales dynamically -->
+    <div class="text-padding-left">
+        <h2 class="display-7 fw-bold mb-1 line-height-1">patrick manifold</h2>
+        <p class="lead text-white-50 m-0">audio cleanup and repair | verified transcripts | dataset preparation</p>
+    </div>
+</header>
+
+        <!-- SECTION 1: Top Two-Column Row -->
+        <div class="row bg-white rounded overflow-hidden shadow-sm g-0 mb-4">
+            <!-- Left Flex Column -->
+            <div class="col-md-6 p-4 border-end">
+                <h2 class="h4 text-dark mb-3">Restoration</h2>
+                <p class="text-muted">
+<ul>
+<li>difficult audio cleanup</li>
+<li>noise reduction</li>
+<li>speech enhancement</li>
+<li>speaker separation/preparation</li>
+<li>intelligibility improvement</li>
+</ul>
+                </p>
+            </div>
+            <!-- Right Flex Column -->
+            <div class="col-md-6 p-4">
+                
+				      <div id="waveform1">
+  <!-- the waveform will be rendered here -->
+       
+</div>
+            </div>
+        </div>
+
+        <!-- SECTION 2: Second Two-Column Row -->
+        <div class="row bg-white rounded overflow-hidden shadow-sm g-0 mb-4">
+            <!-- Left Flex Column -->
+            <div class="col-md-6 p-4 border-end">
+                <h2 class="h4 text-dark mb-3">Transcription and QA</h2>
+                <p class="text-muted">
+<ul>
+<li>AI-assisted transcription</li>
+<li>manual verification</li>
+<li>accuracy correction</li>
+<li>speaker labeling</li>
+<li>timestamps</li>
+</ul>
+                </p>
+            </div>
+            <!-- Right Flex Column -->
+<div class="col-md-6 p-4">
+<img src="srt3.jpg" width=350 alt="image of formatted srt text">
+            </div>
+        </div>
+
+        <!-- SECTION 3: Third Two-Column Row -->
+        <div class="row bg-white rounded overflow-hidden shadow-sm g-0 mb-5">
+            <!-- Left Flex Column -->
+            <div class="col-md-6 p-4 border-end">
+                <h2 class="h4 text-dark mb-3">Structuring and annotation</h2>
+                <p class="text-muted">
+				
+<ul>
+<li>formatted transcripts</li>
+<li>subtitle files</li>
+<li>structured datasets</li>
+<li>tagging/annotation</li>
+<li>JSON/CSV/SQL exports</li>
+</ul>
+                </p>
+            </div>
+            <!-- Right Flex Column -->
+            <div class="col-md-6 p-4">
+                
+                <p class="text-muted">
+                    <img src="json.jpg" width=350 alt="image of JSON text">
+                </p>
+            </div>
+        </div>
+
+        <!-- Footer Section -->
+        <footer class="text-center py-4 text-white-50 border-top border-secondary">
+            <p class="m-0">
+                Have questions? <a href="mailto:your.email@example.com" class="footer-link">contact me</a>
+            </p>
+        </footer>
+
+    </div>
+
+    <!-- Minimal Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/dist/js/bootstrap.bundle.min.js"></script>
+	
+	<script type="module">
+import WaveSurfer from 'https://cdn.jsdelivr.net/npm/wavesurfer.js@7/dist/wavesurfer.esm.js'
 
 const wavesurfer1 = WaveSurfer.create({
   container: '#waveform1',
@@ -15,4 +176,37 @@ wavesurfer1.on('interaction', () => {
 // Play/pause
 document.querySelector('button').addEventListener('click', () => {
   wavesurfer1.playPause()
-})</script></body></html>
+})
+
+
+const wavesurfer2 = WaveSurfer.create({
+  container: '#waveform2',
+  waveColor: '#4F4A85',
+  progressColor: '#383351',
+  mediaControls: true,
+  url: 'BeforeAfter-1.mp3',
+})
+
+wavesurfer2.on('interaction', () => {
+  wavesurfer2.play()
+})
+
+// Play/pause
+document.querySelector('button').addEventListener('click', () => {
+  wavesurfer2.playPause()
+})
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+</body>
+</html>
