@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="color-scheme" content="light">
     <title>pf manifold | audio cleanup and structured transcriptions</title>
     <!-- Bootstrap 5 CSS via CDN -->
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -13,7 +14,12 @@
         body {
             background-color: #6c757d; /* Standard Bootstrap mid-grey */
             min-height: 100vh;
+			color: #000000;
+			color-scheme: light; 
+    
         }
+		
+		
 
         /* Enforce a strict maximum width of 800px for the content area */
         .custom-container {
@@ -28,6 +34,13 @@
                 padding-right: 0 !important;
             }
         }
+		
+		@media (forced-colors: active) {
+		body {
+        forced-color-adjust: none;
+		}
+		}
+
 
         /* Fixed dimensions for the square photo frame */
         .header-photo {
@@ -170,6 +183,7 @@ wavesurfer1.on('interaction', () => {
 document.querySelector('button').addEventListener('click', () => {
   wavesurfer1.playPause()
 })
+
 
 </script>
 </body>
