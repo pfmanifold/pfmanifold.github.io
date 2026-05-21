@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +15,6 @@
 html, body {
     background-color: #6c757d !important; /* Locks mid-grey to BOTH root elements */
     color: #000000 !important;            /* Hard forces black text */
-    color-scheme: light !important;
 }
 
 /* Extra safety: If your content is wrapped in a container, force its background too */
@@ -25,12 +24,9 @@ html, body {
     background-color: transparent !important; 
 }
 
-/* Mid-grey base page background with mobile dark-mode prevention */
+
 body {
-    background-color: #6c757d; /* Standard Bootstrap mid-grey */
     min-height: 100vh;
-    color: #000000;            /* Explicitly set base text color */
-    color-scheme: light;       /* Signals to mobile browsers to use light-theme rules */
 }
 
 /* Enforce a strict maximum width of 800px for the content area */
