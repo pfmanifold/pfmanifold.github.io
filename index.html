@@ -10,60 +10,63 @@
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     
     <style>
-        /* Mid-grey base page background */
-        body {
-            background-color: #6c757d; /* Standard Bootstrap mid-grey */
-            min-height: 100vh;
-			color: #000000;
-			color-scheme: light; 
-    
-        }
-		
-		
+       /* ==========================================================================
+   FINAL COMBINED & OPTIMIZED STYLESHEET
+   ========================================================================== */
 
-        /* Enforce a strict maximum width of 800px for the content area */
-        .custom-container {
-            max-width: 800px;
-            width: 100%;
-        }
+/* Mid-grey base page background with mobile dark-mode prevention */
+body {
+    background-color: #6c757d; /* Standard Bootstrap mid-grey */
+    min-height: 100vh;
+    color: #000000;            /* Explicitly set base text color */
+    color-scheme: light;       /* Signals to mobile browsers to use light-theme rules */
+}
 
-        /* Forces the header components to perfectly line up with the left edge of the content cards */
-        @media (min-width: 768px) {
-            .flush-left {
-                padding-left: 0 !important;
-                padding-right: 0 !important;
-            }
-        }
-		
-		@media (forced-colors: active) {
-		body {
+/* Enforce a strict maximum width of 800px for the content area */
+.custom-container {
+    max-width: 800px;
+    width: 100%;
+}
+
+/* Fixed dimensions for the square photo frame */
+.header-photo {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    flex-shrink: 0;            /* Structural Lock: Prevents photo width from squeezing */
+}
+
+/* Custom gap control + text shrinking math */
+.text-padding-left {
+    margin-left: 20px; 
+    min-width: 0;              /* Layout Key: Allows this container block to shrink */
+    flex-shrink: 1;            /* Explicitly allows text to wrap on small mobile screens */
+}
+
+/* Forces the header components to perfectly line up with the left edge of the content cards */
+@media (min-width: 768px) {
+    .flush-left {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+}
+
+/* Extra bulletproof layer to stop high-contrast/forced themes from overriding colors */
+@media (forced-colors: active) {
+    body {
         forced-color-adjust: none;
-		}
-		}
+    }
+}
 
-
-        /* Fixed dimensions for the square photo frame */
-        .header-photo {
-            width: 80px;
-            height: 80px;
-            object-fit: cover;
-        }
-
-        /* Custom gap control: Increase this pixel value if you want the text pushed further right */
-        .text-padding-left {
-            margin-left: 20px;
-			min-width: 0;
-        }
-
-        /* Custom link hover color for the footer */
-        .footer-link {
-            color: rgba(255, 255, 255, 0.5);
-            text-decoration: underline;
-            transition: color 0.2s ease-in-out;
-        }
-        .footer-link:hover {
-            color: #ffffff;
-        }
+/* Custom link hover color for the footer */
+.footer-link {
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: underline;
+    transition: color 0.2s ease-in-out;
+}
+.footer-link:hover {
+    color: #ffffff;
+}
     </style>
 </head>
 <body class="py-4 d-flex flex-column justify-content-between min-vh-100">
