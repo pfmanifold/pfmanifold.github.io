@@ -146,13 +146,6 @@
             </div>
         </div>
 
-        <!-- Footer Section -->
-        <footer class="text-center py-4 text-white-50 border-top border-secondary">
-            <p class="m-0">
-                Have questions? <a href="mailto:your.email@example.com" class="footer-link">contact me</a>
-            </p>
-        </footer>
-
     </div>
 
     <!-- Minimal Bootstrap JS -->
@@ -178,35 +171,6 @@ document.querySelector('button').addEventListener('click', () => {
   wavesurfer1.playPause()
 })
 
-
-const wavesurfer2 = WaveSurfer.create({
-  container: '#waveform2',
-  waveColor: '#4F4A85',
-  progressColor: '#383351',
-  mediaControls: true,
-  url: 'BeforeAfter-1.mp3',
-})
-
-wavesurfer2.on('interaction', () => {
-  wavesurfer2.play()
-})
-
-// Play/pause
-document.querySelector('button').addEventListener('click', () => {
-  wavesurfer2.playPause()
-})
-
-
-
-
-
-
-
-
-
-
 </script>
-
-
 </body>
 </html>
